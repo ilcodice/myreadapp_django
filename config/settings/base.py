@@ -15,6 +15,9 @@ DEFAULT_APPS = [
 ]
 CUSTOM_APPS = [
     # USER DEFINED APPS
+    "apps.reader",
+    "apps.book",
+    "apps.myread",
 ]
 THIRD_PARTY_APPS = [
     # EXTERNAL APPS
@@ -85,3 +88,7 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Inform django about the new user model
+# AUTH_USER_MODEL = <app_name>.<model_class>
+AUTH_USER_MODEL = 'reader.Reader'
