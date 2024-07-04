@@ -57,6 +57,8 @@ class MyRead(models.Model):
 
         ]
 
+    def __str__(self) -> str:
+        return f'{self.reader_username}({self.book_isbn})'
 
 class StatusPercent(models.Model):
     SP_CHOICE ={
