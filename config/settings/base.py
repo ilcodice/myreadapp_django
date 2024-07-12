@@ -41,7 +41,11 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
+        # You want to be explicit on the location of your templates
         "DIRS": [],
+        # Django will search for tempates in each app that is 
+        # registered in the INSTALLED_APPS
+        # It will look for a specific folder called `templates`
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

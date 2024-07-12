@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.postgres.fields import ArrayField # postgresql specific
 from apps.core.models import CreatedModifiedAbstract
+
+from apps.core.constants import BOOK_CATEGORY
 # Create your models here.
 
 class BookManager(models.Manager):
@@ -40,13 +42,7 @@ class BookAuthor(models.Model):
         verbose_name_plural = 'Books and Authors'
 
 class Book(CreatedModifiedAbstract):
-    BOOK_CATEGORY = {
-        "pr": "programming",
-        "ar": "art",
-        "hi": "history",
-        "po": "politics",
-        "ot": "others"
-    }
+    
     BOOK_FORMAT = {
         "eb": "ebook",
         "hc": "hardcover"
