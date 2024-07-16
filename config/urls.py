@@ -24,5 +24,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     
     # Include all urls from myread
-    path("", include('apps.myread.urls', namespace='myread-urls'))
+    path("", include('apps.myread.urls', namespace='myread-urls')),
+    path("", include("apps.book.urls", namespace='book-urls'))
 ]
