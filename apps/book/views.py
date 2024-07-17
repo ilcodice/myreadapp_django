@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import redirect
 from . import models 
 from .forms import PostBookForm
 
@@ -44,7 +45,26 @@ def book_post(request):
         if form.is_valid():
             data = form.cleaned_data
             # TODO: Save to database
-            # TODO: Redirect to home page
+            book = models.Book(
+                isbn=data['isbn'],
+                title=data['title'],
+                page_count=data['pages'],
+                description=data['description'],
+                category=data['category'],
+                published_date = data['published_year'],
+                publisher=data['publisher'],
+                lang=data['language'],
+                edition=data['edition'],
+                book_format=data['book_format']
+            )
+            # save book first, to avoid `ValueError: Cannot add *: instance is on database "default", value is on database "None"`
+            book.save()
+
+            book.tags.set(data['tags'])
+            book.save()
+
+            # TODO: Redirect to home page using `app-name: url-name`
+            return redirect('myread-urls:home-page')
 
 
 
