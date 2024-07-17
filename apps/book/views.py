@@ -11,3 +11,6 @@ def book_detail(request, isbn):
 
     }
     return render(request, 'book_detail.html', context)
+
+def book_post(request):
+    return render(request, 'post.html')

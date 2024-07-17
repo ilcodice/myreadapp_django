@@ -42,7 +42,7 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         # You want to be explicit on the location of your templates
-        "DIRS": [],
+        "DIRS": [str(BASE_DIR / 'core' / 'templates')],
         # Django will search for tempates in each app that is 
         # registered in the INSTALLED_APPS
         # It will look for a specific folder called `templates`
