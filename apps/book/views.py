@@ -8,6 +8,28 @@ from .forms import PostBookForm
 def book_detail(request, isbn):
     book = models.Book.objects.get(pk=isbn)
 
+    # Set the max viewed book
+    max_viewed_books: int = 5
+
+    # Get the current stored session
+    viewed_books: list = request.session.get('viewed_books', [])
+
+    # Create the data to be stored in the session
+    viewed_book: list[str] = [book.isbn, book.title]
+
+    # Remove if it exist already
+    if viewed_book in viewed_books:
+        viewed_books.remove(viewed_book)
+
+    # Insert the viewed book at index 0
+    viewed_books.insert(0, viewed_book)
+
+    # Get the limit
+    viewed_books = viewed_books[:max_viewed_books]
+
+    # replace in the session
+    request.session['viewed_books'] = viewed_books
+
     context = {
         "book": book,
 
